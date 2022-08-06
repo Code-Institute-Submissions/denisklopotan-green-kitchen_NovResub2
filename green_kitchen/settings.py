@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['green_kitchen.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['green-kitchen.herokuapp.com', 'localhost']
 
 
 # Application definition

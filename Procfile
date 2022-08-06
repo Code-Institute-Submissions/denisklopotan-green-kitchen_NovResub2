@@ -1,1 +1,1 @@
-web: gunicorn green-kitchen.wsgi
+web: gunicorn green_kitchen.wsgi

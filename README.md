@@ -1,6 +1,9 @@
 # Green Kitchen
 
 ! NOTE: Green Kitchen project is still in its sprouting phase. After leave of absence ended, i was given access to LMS again and 10 days for late submission of PP4. Due to short time allocated, unfortunately i could not process study material and make project on time, although im very happy with my personal progress and understanding of coding, and im starting to have much more fun :D looking forward to resubmit it proper! thank you
+
+! Project was based on unfinished template of module 'I think therefore i blog' from CI, all credits to it
+
 ![responsive](media/kitchen_table.jpg) 
 Link to the live website: [Green Kitchen](https://green-kitchen.herokuapp.com/)
 
@@ -75,6 +78,8 @@ All activities are supervised by admin which can delete comments or remove posts
 ## Deployment
 
 ## Credits
+
+! Project was based on unfinished template of module 'I think therfore i blog' from CI, all credits to it
 
 ## Acknowledgements
 

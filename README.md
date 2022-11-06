@@ -1,8 +1,6 @@
 # Green Kitchen
 
-! NOTE: Green Kitchen project is still in its sprouting phase. After leave of absence ended, i was given access to LMS again and 10 days for late submission of PP4. Due to short time allocated, unfortunately i could not process study material and make project on time, although im very happy with my personal progress and understanding of coding, and im starting to have much more fun :D looking forward to resubmit it proper! thank you
-
-! Project was based on unfinished template of module 'I think therefore i blog' from CI, all credits to it
+Portfolio Project 4: Full-Stack Toolkit
 
 ![responsive](assets/kitchen_table.jpg) 
 Link to the live website: [Green Kitchen](https://green-kitchen.herokuapp.com/)
@@ -32,15 +30,18 @@ Link to the live website: [Green Kitchen](https://green-kitchen.herokuapp.com/)
 
 Green Kitchen is place where progressive ideas cook. Topics of health, self-awareness, sustainability. Ancient wisdom is always just taking new forms. We are in a constant dialogue of the past, present and future.
 
-Site concept is a personal blog with news section and a recipe page. Users can participate in comments on posts and news articles, with ability to like, upvote or downvote. They can also post recipes on recipe page.
+Site concept is a personal blog with news section and a recipe page. Registered users can participate by commenting on posts and news articles, adding recipes, editing and deleting comments, contacting site admin trough contact form, etc..
 
-All activities are supervised by admin which can delete comments or remove posts, post new blogs, etc..
+Elements implemented so far are personal blog with posts. Registered users can comment on posts or like posts. Admin can create posts, approve / delete comments or remove users.
+
 
 ## UX 
 
 ### User Stories
 
-![responsive](media/user_stories.png) 
+Users stories where created following agile development principles. Platform for creation was Github projects where we used Kanban board to add and organise user storiesuntil completion. Most user stories where realised while some where discontinued and some issues where left open as more relevant for continuation. Link to Github projects: [Green Kitchen User Stories](https://github.com/users/denisklopotan/projects/1)
+
+![responsive](assets/user_stories.png) 
 
 ### Wireframes
 
@@ -50,31 +51,47 @@ I put more love in these wireframes than in any wireframes before! For making th
 
 HOMEPAGE
 
-![responsive](assets/wireframes/home.png) 
+![Home](assets/wireframes/home.png) 
 
-BLOG SECTION
+<details>
+ <summary>BLOG SECTION</summary>
 
-![responsive](assets/wireframes/blog.png)
+![Blog](assets/wireframes/blog.png)
+</details>
 
-OPEN POST
+<details>
+ <summary>OPEN POST</summary>
 
-![responsive](assets/wireframes/post.png)
+![Post](assets/wireframes/post.png)
+</details>
 
-RECIPES SECTION
+<details>
+ <summary>RECIPES SECTION</summary>
 
-![responsive](assets/wireframes/recipes.png)
+![Recipes](assets/wireframes/recipes.png)
+</details>
 
-OPEN RECIPE
+<details>
+ <summary>OPEN RECIPE</summary>
 
-![responsive](assets/wireframes/recipe.png)
+![Recipe](assets/wireframes/recipe.png)
+</details>
 
-LOGIN
+<details>
+ <summary>LOGIN</summary>
 
-![responsive](assets/wireframes/login.png)
+![Login](assets/wireframes/login.png)
+</details>
 
-MOBILE DEVICES
+<details>
+ <summary>MOBILE DEVICES</summary>
 
-![responsive](assets/wireframes/mobile.png)
+![Mobile](assets/wireframes/mobile.png)
+</details>
+
+## Database Schema
+
+![Database Schema](assets/drawSQL.png)
 
 ## Features
 
@@ -120,7 +137,117 @@ MOBILE DEVICES
 
 ## Deployment
 
-...
+To create the project i followed LMS walktrough of module: 'I Think Therefore I Blog'. We firstly created Github project repository by using default CI 'gitpod-full-template'.
+Alongside i used provided cheat sheets with instructions for seting up basic django project in Gitpod enviroment and how to deploy on Heroku. I will provide instructions here:
+
+### Setting up basic Django Project and Deploying to Heroku
+
+#### Step 1: Installing Django and supporting libraries
+
+In the Terminal:
+
+<table>
+    <tr>
+        <th>#</th>
+        <th>Step</th>
+        <th>Code</th>
+    </tr>
+    <tr>
+        <td>1.</td>
+        <td>Install Django and gunicorn:</td>
+        <td>pip3 install 'django<4' gunicorn</td>
+    </tr>
+    <tr>
+        <td>2.</td>
+        <td>Install supporting libraries:</td>
+        <td>pip3 install dj_database_url psycopg2</td>
+    </tr>
+    <tr>
+        <td>3.</td>
+        <td>Install Cloudinary Libraries</td>
+        <td>pip3 install dj3-cloudinary-storage</td>
+    </tr>
+        <tr>
+        <td>4.</td>
+        <td>Create requirements file</td>
+        <td>pip3 freeze --local > requirements.txt</td>
+    </tr>
+        <tr>
+        <td>5.</td>
+        <td>Create Project (codestar 2021)</td>
+        <td>django-admin startproject PROJ_NAME . (Don’t forget the . )</td>
+    </tr>
+        <tr>
+        <td>6.</td>
+        <td>Create App (blog)</td>
+        <td>python3 manage.py startapp APP_NAME</td>
+    </tr>
+</table>
+
+settings.py:
+
+<table>
+    <tr>
+        <th>#</th>
+        <th>Step</th>
+        <th>Code</th>
+    </tr>
+    <tr>
+        <td>7.</td>
+        <td>Add to installed apps</td>
+        <td>INSTALLED_APPS = [ … 'APP_NAME', ]
+</td>
+    </tr>
+    <tr>
+        <td>*</td>
+        <td>Save file</td>
+        <td></td>
+    </tr>
+</table>
+
+In the Terminal:
+
+<table>
+    <tr>
+        <th>#</th>
+        <th>Step</th>
+        <th>Code</th>
+    </tr>
+    <tr>
+        <td>8.</td>
+        <td>Migrate Changes</td>
+        <td>python3 manage.py migrate</td>
+    </tr>
+    <tr>
+        <td>9.</td>
+        <td>Run Server to Test</td>
+        <td>python3 manage.py runserver</td>
+    </tr>
+</table>
+
+#### Step 2: Deploying an app to Heroku
+
+4 stages:
+
+1. Create the Heroku app
+2. Attach the database
+3. Prepare our environment and settings.py file
+4. Get our static and media files stored on Cloudinary
+
+Note: Error fix
+
+If you get the error below during the steps to deployment:
+
+django.db.utils.OperationalError: FATAL: role "somerandomletters" does not exist
+
+Please run the following command in the terminal to fix it:
+
+unset PGHOSTADDR
+
+2.1 Create the Heroku app
+
+... to be continued
+
 
 ## Credits
 

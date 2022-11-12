@@ -76,3 +76,32 @@ class PostLike(View):
             post.likes.add(request.user)
 
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
+### Edit comments ###
+
+def EditComment(request, comment_id):
+    comment = get_object_or_404(Comment, id = comment_id)
+    form = CommentForm(instance = comment)
+    if request.user.username == comment.name:
+        if request.method == "POST":
+            form = CommentForm(request.POST, request.FILES, instance = comment)
+            if form.is_valid():
+                form.save(commit = False)
+                form.save()
+            return HttpResponseRedirect('edit_successful???') # <--- Try pop up pop up / banner on same page
+    else:
+        return redirect('not_authorised???') # <--- Try pop up pop up / banner on same page
+    return render(request, 'edit_comment.html', {'form': form})
+
+### Delete comments ###
+
+def DeleteComment(request, comment_id):
+    comment = get_object_or_404(Comment, id = comment_id)
+    form = CommentForm(instance = comment)
+    if request.user.username == comment.name:
+        if request.method == "POST":
+            comment.delete()
+            return HttpResponseRedirect('delete_successful???') # <--- Try pop up / banner pop up on same page
+    else:
+        return redirect('not_authorised???') # <--- Try pop up / banner on same page
+    return render(request, 'delete_comment.html', {'form': form})

@@ -11,5 +11,10 @@ class Contact(models.Model):
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        verbose_name = 'Message'
+        verbose_name_plural = 'Messages'
+
     def __str__(self):
         return f"New message from {self.fname} {self.lname}: {self.body}"
+

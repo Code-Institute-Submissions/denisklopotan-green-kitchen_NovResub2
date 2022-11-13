@@ -1,7 +1,7 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
 from django.http import HttpResponseRedirect
-from .models import Post
+from .models import Post, Comment
 from .forms import CommentForm
 
 
@@ -88,9 +88,10 @@ def EditComment(request, comment_id):
             if form.is_valid():
                 form.save(commit = False)
                 form.save()
-            return HttpResponseRedirect('edit_successful???') # <--- Try pop up pop up / banner on same page
+            post = get_object_or_404(Post, id = comment.post.id)
+            return redirect('post_detail', slug=post.slug)
     else:
-        return redirect('not_authorised???') # <--- Try pop up pop up / banner on same page
+        return redirect('not_authorised???')
     return render(request, 'edit_comment.html', {'form': form})
 
 ### Delete comments ###
@@ -101,7 +102,8 @@ def DeleteComment(request, comment_id):
     if request.user.username == comment.name:
         if request.method == "POST":
             comment.delete()
-            return HttpResponseRedirect('delete_successful???') # <--- Try pop up / banner pop up on same page
+            post = get_object_or_404(Post, id = comment.post.id)
+            return redirect('post_detail', slug=post.slug)
     else:
-        return redirect('not_authorised???') # <--- Try pop up / banner on same page
+        return redirect('not_authorised???')
     return render(request, 'delete_comment.html', {'form': form})

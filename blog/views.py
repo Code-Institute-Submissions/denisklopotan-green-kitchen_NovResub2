@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
 from django.http import HttpResponseRedirect
+from django.contrib import messages
 from .models import Post, Comment
 from .forms import CommentForm
 
@@ -89,6 +90,7 @@ def EditComment(request, comment_id):
                 form.save(commit = False)
                 form.save()
             post = get_object_or_404(Post, id = comment.post.id)
+            messages.info(request, 'Your comment has been successfully updated!')
             return redirect('post_detail', slug=post.slug)
     else:
         return redirect('not_authorised???')
@@ -103,6 +105,7 @@ def DeleteComment(request, comment_id):
         if request.method == "POST":
             comment.delete()
             post = get_object_or_404(Post, id = comment.post.id)
+            messages.info(request, 'Your comment has been successfully deleted!')
             return redirect('post_detail', slug=post.slug)
     else:
         return redirect('not_authorised???')

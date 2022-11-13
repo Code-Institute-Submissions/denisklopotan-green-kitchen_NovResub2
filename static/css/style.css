@@ -1,24 +1,81 @@
-body {
-    background-color: #5c9948;
+.main-bg {
+    background-color: #bad6b0;
 }
 
-/* Navbar */
-.bg-white {
-    background-color: #114500!important;
+.navbar {
+    background-color: #0d5700;
+}
+.hr1-welcome {
+    margin: 2rem 0 2rem 0;
 }
 
+.hr2-welcome {
+    margin: 2rem 0 0 0;
+}
 
+h2 {
+    margin-top: 0.7rem;
+}
 
-.navbar-light .navbar-nav .nav-link {
-    color: rgb(121, 135, 97)
+h3 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #103805;
+}
+
+/* .navbar.nav {
+    display: flex;
+    align-items: flex-end
+} */
+
+.navbar-toggler {
+    color: #44ff00;
+}
+
+.navbar-collapse {
+    flex-basis: 100%;
+    flex-grow: 0;
+}
+
+.nav-link {
+    font-size: larger;
+    color: #44ff00;
+    vertical-align: bottom;
 }
 
 .brand {
     font-family: Lato, sans-serif;
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: 700;
-    color: green;
+    color: #44ff00;
 }
+
+/* body {
+    background-color: #5c9948;
+} */
+
+/* .welcome {
+    background-color: #84ac79;
+} */
+
+.reminder {
+    background-color: #408a33;
+    color: whitesmoke;
+}
+
+.reminder-link {
+    color: #44ff00;
+}
+
+footer {
+    color: #44ff00;
+    background-color: #103805;
+}
+
+.media-links {
+    margin: 40px;
+    color: #44ff00;
+}
+
 
 .thin {
     font-weight: 300;
@@ -26,14 +83,6 @@ body {
 
 .light-bg {
     background-color: #fff;
-}
-
-.dark-bg {
-    background-color: rgb(40, 105, 40);
-}
-
-.main-bg {
-    background-color: #bad6b0;
 }
 
 .card {
@@ -50,7 +99,7 @@ body {
     bottom: 5%;
     min-width: 30%;
     left: -2px;
-    background-color: #23BBBB;
+    background-color: #0d5700;
 }
 
 .author {
@@ -69,7 +118,7 @@ body {
 }
 
 .masthead-text {
-    background-color: #35683a;
+    background-color: #0d5700;
     color: white;
     position: relative;
 }
@@ -86,7 +135,7 @@ body {
     right: 90%;
     height: 100%;
     width: 150%;
-    background: #35683a;
+    background: #0d5700;
     -webkit-transform: skew(15deg);
     -moz-transform: skew(15deg);
     transform: skew(15deg);
@@ -95,12 +144,20 @@ body {
 
 .post-link {
     text-decoration: none;
-    color: green;
+    color:#103805 ;
 }
 
-.post-link:hover,
+.post-link:hover {
+    color: #845100;
+}
+
 .page-link {
-    color: #E84610;
+    background-color: maroon;
+    color: #f8f9fa;
+}
+
+.page-link:hover {
+    background-color:#103805;
 }
 
 .post-title {
@@ -113,19 +170,29 @@ body {
     color: lightgray;
 }
 
+.main-btn {
+    background-color: maroon;
+    color: #fff;
+}
+
+.main-btn:hover {
+    background-color: #103805;
+    color: #fff;
+}
+
 .btn-signup {
-    background-color: #23BBBB;
+    background-color: maroon;
     color: #fff;
 }
 
 .btn-signup:hover,
 .btn-signup:active {
-    background-color: #fff;
-    color: #23BBBB;
+    background-color: #103805;
+    color: #fff;
 }
 
 .link {
-    color: #23BBBB;
+    color: #bb2323;
     text-decoration: none;
 }
 

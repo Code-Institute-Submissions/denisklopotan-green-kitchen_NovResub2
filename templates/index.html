@@ -5,6 +5,22 @@
 <div class="container-fluid">
     <div class="row">
 
+        <!-- Welcome message -->
+        <div class="welcome">
+            <hr class="hr1-welcome">
+            <h3 class="m-2 text-center">
+                I know i know, there will be many things said here that might disturb you.
+                Before running away i would like you to ask yourself one question. "What if?"
+                What if some of these things are true? What would you do?
+                Would you update your system or still run on old software?
+                Informations provided here are turning point for millions around world,
+                escape from pain and suffering, a gateweay to new life, literally.
+                Im one of those and i invite you, give a best version of yourself a chance!
+                Welcome to the real world Neo.
+            </h3>
+            <hr class="hr2-welcome">
+        </div>
+
         <!-- Blog Entries Column -->
         <div class="col-12 mt-3 left">
             <div class="row">
@@ -41,6 +57,7 @@
 
             </div>
         </div>
+
     </div>
     {% if is_paginated %}
     <nav aria-label="Page navigation">
@@ -55,5 +72,12 @@
         </ul>
     </nav>
     {% endif %}
+</div>
+
+<!-- Login for CRUD reminder -->
+<div class="row reminder">
+    <p class="m-2 text-center">
+        Reminder to <a class="reminder-link" href="{% url 'account_login' %}">Log In</a> / <a class="reminder-link" href="{% url 'account_signup' %}">Register</a> in order to comment on posts and leave your valuable opinion.
+        If you want to contact us privately please do trough the following form: <a class="reminder-link" href="{% url 'contact' %}">Contact Us</a>. Thank you!</p>
 </div>
 {%endblock%}

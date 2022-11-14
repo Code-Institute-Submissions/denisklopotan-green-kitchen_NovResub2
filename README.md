@@ -92,7 +92,73 @@ HOMEPAGE
 
 ## Features
 
+### Homepage
 
+Main page wih navbar, welcome text and paginated list of posts
+
+![](assets/testing/greenkitchen1.png)
+
+### Navbar button
+
+On mobile devices navbar collapses into button which we can press and open menu with links
+
+![](assets/testing/button.png)
+
+### Contact form
+
+We implemented a custom model to send user data to database
+![](assets/testing/greenkitchen2.png)
+
+### Authentication
+
+Sign Up
+
+![](assets/testing/greenkitchen3.png)
+
+Sign In
+
+![](assets/testing/greenkitchen4.png)
+
+Sign Out
+
+![](assets/testing/greenkitchen5.png)
+
+### Comments
+
+Authenticated user can create coments and update and delete their own comments, but not comments from other users.
+
+![](assets/testing/greenkitchen6.png)
+
+Leave comment
+![](assets/testing/greenkitchen7.png)
+
+Edit comment
+![](assets/testing/greenkitchen8.png)
+
+Delete comment
+![](assets/testing/greenkitchen9.png)
+
+After commenting we can see alert message : comment is waiting approval.
+![](assets/testing/greenkitchen10.png)
+
+### Post
+
+Individual posts open i their own respective page.
+
+![](assets/testing/greenkitchen11.png)
+
+### Footer, reminder and page buton
+
+Above the footer you can see message reminder for user to register in order to use CRUD. With provided links.
+There is also a button to acess next paginated page of posts. There is maximum 6 posts per page.
+
+![](assets/testing/greenkitchen6.png)
+
+### Admin
+
+Admin panel is working properly. As admin we have full CRUD to manage user accounts, posts, comments, user messages..
+
+![](assets/testing/greenkitchen12.png)
 
 ## Issues and Bugs
 

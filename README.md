@@ -107,6 +107,7 @@ On mobile devices navbar collapses into button which we can press and open menu 
 ### Contact form
 
 We implemented a custom model to send user data to database
+
 ![](assets/testing/greenkitchen2.png)
 
 ### Authentication
@@ -127,23 +128,25 @@ Sign Out
 
 Authenticated user can create coments and update and delete their own comments, but not comments from other users.
 
-![](assets/testing/greenkitchen6.png)
-
 Leave comment
+
 ![](assets/testing/greenkitchen7.png)
 
 Edit comment
+
 ![](assets/testing/greenkitchen8.png)
 
 Delete comment
+
 ![](assets/testing/greenkitchen9.png)
 
 After commenting we can see alert message : comment is waiting approval.
+
 ![](assets/testing/greenkitchen10.png)
 
 ### Post
 
-Individual posts open i their own respective page.
+Individual posts open in their own respective page.
 
 ![](assets/testing/greenkitchen11.png)
 
@@ -163,6 +166,12 @@ Admin panel is working properly. As admin we have full CRUD to manage user accou
 ## Issues and Bugs
 
 There where no known bugs at the time deployment, ones during development where fixed.
+
+## To be implemented
+
+As visible from wireframes, ide is to implement recipe and article page where users can write their own recipes or ingage in more actions.
+
+There are few more features that where paert of user stories but where closed as not implemented. Will do in future instances. [Green Kitchen User Stories](https://github.com/users/denisklopotan/projects/1)
 
 ## Technologies Used
 
@@ -638,6 +647,23 @@ if os.path.isfile("env.py"):
         <td>E.g Github as deployment method, on main branch</td>
     </tr>
 </table>
+
+### Forking this repository
+
+- Locate the repository at this [link](https://github.com/denisklopotan/green-kitchen).
+- At the top of the repository, on the right side of the page, select "Fork" from the buttons available.
+- A copy of the repository is now created.
+
+### Cloning this repository
+
+To clone this repository follow the below steps:
+
+- Under 'Code', see the different cloning options, HTTPS, SSH, and GitHub CLI. 
+- Click the prefered cloning option, and then copy the link provided.
+- Open Terminal.
+- In Terminal, change the current working directory to the desired location of the cloned directory.
+- Type 'git clone', and then paste the URL copied from GitHub earlier.
+- Type 'Enter' to create the local clone.
 
 ## Credits
 

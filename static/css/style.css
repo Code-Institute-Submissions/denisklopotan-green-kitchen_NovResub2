@@ -22,11 +22,6 @@ h3 {
     color: #103805;
 }
 
-/* .navbar.nav {
-    display: flex;
-    align-items: flex-end
-} */
-
 .navbar-toggler {
     color: #44ff00;
 }
@@ -48,14 +43,6 @@ h3 {
     font-weight: 700;
     color: #44ff00;
 }
-
-/* body {
-    background-color: #5c9948;
-} */
-
-/* .welcome {
-    background-color: #84ac79;
-} */
 
 .reminder {
     background-color: #408a33;

@@ -2,7 +2,7 @@
 {% block content %}
 {% if user.is_authenticated %}
 
-<div class="container-fluid contact-form" id="">
+<div class="container-fluid contact-form">
     <h1>Delete comment</h1>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
@@ -13,7 +13,7 @@
 
 {% else %}
 
-<div class="container-fluid contact-form" id="">
+<div class="container-fluid contact-form">
     <h1>You are not authorised to access this page. Sign in <a href="{% url 'account_login' %}">HERE</a></h1>
 </div>
 

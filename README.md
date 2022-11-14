@@ -30,10 +30,7 @@ Link to the live website: [Green Kitchen](https://green-kitchen.herokuapp.com/)
 
 Green Kitchen is place where progressive ideas cook. Topics of health, self-awareness, sustainability. Ancient wisdom is always just taking new forms. We are in a constant dialogue of the past, present and future.
 
-Site concept is a personal blog with news section and a recipe page. Registered users can participate by commenting on posts and news articles, adding recipes, editing and deleting comments, contacting site admin trough contact form, etc..
-
-Elements implemented so far are personal blog with posts. Registered users can comment on posts or like posts. Admin can create posts, approve / delete comments or remove users.
-
+Site concept is a personal blog with news section and a recipe page. Registered users can participate by commenting on posts and, editing and deleting comments, contacting site admin trough contact form.
 
 ## UX 
 
@@ -95,7 +92,11 @@ HOMEPAGE
 
 ## Features
 
+
+
 ## Issues and Bugs
+
+There where no known bugs at the time deployment, ones during development where fixed.
 
 ## Technologies Used
 
@@ -133,7 +134,7 @@ HOMEPAGE
 
 ## Testing
 
-...
+Testing can be found here: [TESTING.md](TESTING.md)
 
 ## Deployment
 
@@ -144,7 +145,7 @@ Alongside i used provided cheat sheets with instructions for seting up basic dja
 
 #### Step 1: Installing Django and supporting libraries
 
-In the Terminal:
+#### In the Terminal:
 
 <table>
     <tr>
@@ -184,7 +185,7 @@ In the Terminal:
     </tr>
 </table>
 
-settings.py:
+#### settings.py:
 
 <table>
     <tr>
@@ -205,7 +206,7 @@ settings.py:
     </tr>
 </table>
 
-In the Terminal:
+#### In the Terminal:
 
 <table>
     <tr>
@@ -225,7 +226,7 @@ In the Terminal:
     </tr>
 </table>
 
-#### Step 2: Deploying an app to Heroku
+### Step 2: Deploying an app to Heroku
 
 4 stages:
 
@@ -238,16 +239,339 @@ Note: Error fix
 
 If you get the error below during the steps to deployment:
 
-django.db.utils.OperationalError: FATAL: role "somerandomletters" does not exist
+*django.db.utils.OperationalError: FATAL: role "somerandomletters" does not exist*
 
 Please run the following command in the terminal to fix it:
 
-unset PGHOSTADDR
+**unset PGHOSTADDR**
 
-2.1 Create the Heroku app
+#### 2.1 Create the Heroku app
 
-... to be continued
+In heroku.com: (Note: must be logged in)
 
+<table>
+    <tr>
+        <th>#</th>
+        <th>Step</th>
+        <th>Code</th>
+    </tr>
+    <tr>
+        <td>1.</td>
+        <td>Create new Heroku App</td>
+        <td>APP_NAME, Location = Europe</td>
+    </tr>
+    <tr>
+        <td>2.</td>
+        <td>Add Database to App Resources</td>
+        <td>Located in the Resources Tab, Add-ons, search and add e.g. ‘Heroku Postgres’</td>
+    </tr>
+    <tr>
+        <td>3.</td>
+        <td>Copy DATABASE_URL value</td>
+        <td>Located in the Settings Tab, click reveal Config Vars, Copy Text</td>
+    </tr>
+</table>
+
+#### 2.2 Attach the Database:
+
+#### In gitpod:
+
+<table>
+    <tr>
+        <th>#</th>
+        <th>Step</th>
+        <th>Code</th>
+    </tr>
+    <tr>
+        <td>4.</td>
+        <td>Create new env.py file on top level directory</td>
+        <td>E.g. env.py</td>
+    </tr>
+</table>
+
+#### In env.py
+
+<table>
+    <tr>
+        <th>#</th>
+        <th>Step</th>
+        <th>Code</th>
+    </tr>
+    <tr>
+        <td>5.</td>
+        <td>Import os library</td>
+        <td>import os</td>
+    </tr>
+    <tr>
+        <td>6.</td>
+        <td>Set environment variables</td>
+        <td>os.environ["DATABASE_URL"] = "Paste in Heroku DATABASE_URL Link"</td>
+    </tr>
+    <tr>
+        <td>7.</td>
+        <td>Add in secret key</td>
+        <td>os.environ["SECRET_KEY"] = "Make up your own randomSecretKey"</td>
+    </tr>
+</table>
+
+#### In heroku.com
+
+<table>
+    <tr>
+        <th>#</th>
+        <th>Step</th>
+        <th>Code</th>
+    </tr>
+    <tr>
+        <td>8.</td>
+        <td>Add Secret Key to Config Vars</td>
+        <td>SECRET_KEY, “randomSecretKey”</td>
+    </tr>
+</table>
+
+#### 2.3 Prepare our environment and settings.py file:
+
+#### In settings.py
+
+<table>
+    <tr>
+        <th>#</th>
+        <th>Step</th>
+        <th>Code</th>
+    </tr>
+    <tr>
+        <td>9.</td>
+        <td>Reference env.py 
+(Note: font in bold is new)</td>
+        <td>from pathlib import Path
+import os
+import dj_database_url
+
+if os.path.isfile("env.py"):
+   import env
+</td>
+    </tr>
+    <tr>
+        <td>10.</td>
+        <td>Remove the insecure secret key and replace - links to the SECRET_KEY variable on Heroku
+(Note: font in bold is new)</td>
+        <td>SECRET_KEY = os.environ.get('SECRET_KEY')</td>
+    </tr>
+    <tr>
+        <td>11.</td>
+        <td>Comment out the old DataBases Section</td>
+        <td># DATABASES = {
+            #     'default': {
+            #         'ENGINE': 'django.db.backends.sqlite3',
+            #         'NAME': BASE_DIR / 'db.sqlite3',
+            #     }
+            # }
+</td>
+    </tr>
+    <tr>
+        <td>12.</td>
+        <td>Add new DATABASES Section
+            - links to the DATATBASE_URL variable on Heroku</td>
+        <td>DATABASES = {'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))}</td>
+    </tr>
+</table>
+
+#### In the Terminal
+
+<table>
+    <tr>
+        <th>#</th>
+        <th>Step</th>
+        <th>Code</th>
+    </tr>
+    <tr>
+        <td>12.</td>
+        <td>Save all files and Make Migrations</td>
+        <td>python3 manage.py migrate</td>
+    </tr>
+</table>
+
+#### 2.4 Get our static and media files stored on Cloudinary:
+
+#### In Cloudinary.com: (Note: must be logged in)
+
+<table>
+    <tr>
+        <th>#</th>
+        <th>Step</th>
+        <th>Code</th>
+    </tr>
+    <tr>
+        <td>8.</td>
+        <td>Copy your CLOUDINARY_URL e.g. API Environment Variable.</td>
+        <td>From Cloudinary Dashboard</td>
+    </tr>
+</table>
+
+#### In env.py
+
+<table>
+    <tr>
+        <th>#</th>
+        <th>Step</th>
+        <th>Code</th>
+    </tr>
+    <tr>
+        <td>2.</td>
+        <td>Add Cloudinary URL to env.py - be sure to paste in the correct section of the link</td>
+        <td>os.environ["CLOUDINARY_URL"] = "cloudinary://************************"</td>
+    </tr>
+</table>
+
+#### In Heroku:
+
+<table>
+    <tr>
+        <th>#</th>
+        <th>Step</th>
+        <th>Code</th>
+    </tr>
+    </tr>
+        <tr>
+        <td>3.</td>
+        <td>Add Cloudinary URL to Heroku Config Vars - be sure to paste in the correct section of the link</td>
+        <td>Add to Settings tab in Config Vars e.g. COUDINARY_URL, cloudinary://************************</td>
+    </tr>
+    <tr>
+        <td>4.</td>
+        <td>Add DISABLE_COLLECTSTATIC to Heroku Config Vars (temporary step for the moment, will be removed before deployment)</td>
+        <td>e.g. DISABLE_COLLECTSTATIC, 1</td>
+    </tr>
+</table>
+
+#### In settings.py:
+
+<table>
+    <tr>
+        <th>#</th>
+        <th>Step</th>
+        <th>Code</th>
+    </tr>
+
+    <tr>
+        <td>5.</td>
+        <td>Add Cloudinary Libraries to installed apps</td>
+        <td>INSTALLED_APPS = [
+    …,
+    'cloudinary_storage',
+    'django.contrib.staticfiles',
+    'cloudinary',
+    …,
+]
+
+(note: order is important)
+</td>
+    </tr>
+    <tr>
+        <td>6.</td>
+        <td>Tell Django to use Cloudinary to store media and static files Place under the Static files Note </td>
+        <td>STATIC_URL = '/static/'
+
+        STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+        STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+        STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+        MEDIA_URL = '/media/'
+        DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+</td>
+    </tr>
+        <tr>
+        <td>7.</td>
+        <td>Link file to the templates directory in Heroku Place under the BASE_DIR line</td>
+        <td>TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')</td>
+    </tr>
+        <tr>
+        <td>8.</td>
+        <td>Change the templates directory to TEMPLATES_DIR Place within the TEMPLATES array</td>
+        <td>TEMPLATES = [
+    {
+        …,
+        'DIRS': [TEMPLATES_DIR],
+       …,
+            ],
+        },
+    },
+]
+</td>
+    </tr>
+        <tr>
+        <td>9.</td>
+        <td>Add Heroku Hostname to ALLOWED_HOSTS (e.g. codestar2021)</td>
+        <td>ALLOWED_HOSTS = ["PROJ_NAME.herokuapp.com", "localhost"]</td>
+    </tr>
+</table>
+
+#### In Gitpod:
+
+<table>
+    <tr>
+        <th>#</th>
+        <th>Step</th>
+        <th>Code</th>
+    </tr>
+    <tr>
+        <td>10.</td>
+        <td>Create 3 new folders on top level directory</td>
+        <td>media, static, templates</td>
+    </tr>
+       <tr>
+        <td>11.</td>
+        <td>Create procfile on the top level directory</td>
+        <td>Procfile</td>
+    </tr>
+</table>
+
+#### In Procfile
+
+<table>
+    <tr>
+        <th>#</th>
+        <th>Step</th>
+        <th>Code</th>
+    </tr>
+    <tr>
+        <td>12.</td>
+        <td>Add code</td>
+        <td>web: gunicorn PROJ_NAME.wsgi</td>
+    </tr>
+</table>
+
+* **Note:** Save all files
+
+#### In the Terminal:
+
+<table>
+    <tr>
+        <th>#</th>
+        <th>Step</th>
+        <th>Code</th>
+    </tr>
+    <tr>
+        <td>13.</td>
+        <td>Add, Commit and Push</td>
+        <td>git add . / git commit -m “Deployment Commit” / git push</td>
+    </tr>
+</table>
+
+#### In Heroku:
+
+<table>
+    <tr>
+        <th>#</th>
+        <th>Step</th>
+        <th>Code</th>
+    </tr>
+    <tr>
+        <td>14.</td>
+        <td>Deploy Content manually through heroku/</td>
+        <td>E.g Github as deployment method, on main branch</td>
+    </tr>
+</table>
 
 ## Credits
 
@@ -257,7 +581,7 @@ Content for blog posts was taken from Anthony William's (Medical Medium) webpage
 
 ### Media
 
-...
+Blog post pictures where taken from: [Pexels](https://www.pexels.com/)
 
 ### Code
 
@@ -266,16 +590,17 @@ Project is based on LMS module template: 'I Think Therefore I Blog'.
 I was mainly inspired and learnt trough LMS modules, slack and other students project examples.
 Going trough different project codes and seeing similar patterns over and over again made me grasp things better.
 
-OF special help i found following project (maby cause they where on top of page hehe):
+Online resources i found most useful where sites like Stack Overflow or Youtube.
 
-- https://github.com/AliOKeeffe/PP4_My_Meal_Planner
-- https://github.com/Delboy/EatMe
-- https://github.com/cornishcoder1/the_paper_lounge
+Websites:
 
-Aditional credits:
-
-- https://docs.djangoproject.com/
-
+- [Django](https://docs.djangoproject.com/)
+  - [Generic editing](https://docs.djangoproject.com/en/4.1/ref/class-based-views/generic-editing/#)
+  - [The messages framework](https://docs.djangoproject.com/en/3.2/ref/contrib/messages/#using-messages-in-views-and-templates)
+  - [URL dispatcher](https://docs.djangoproject.com/en/4.1/topics/http/urls/)
+- [Stack Overflow](https://stackoverflow.com/)
+  - [Django How to implement alert()](https://stackoverflow.com/questions/28240746/django-how-to-implement-alertpopup-message-after-complete-method-in-view)
+- [Youtube - Contact Form with bootstrap in django](https://www.youtube.com/watch?v=lSgRWA4PMt4)
 
 ## Acknowledgements
 
